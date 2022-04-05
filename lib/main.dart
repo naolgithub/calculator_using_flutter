@@ -3,6 +3,7 @@ import 'package:calculator_using_flutter/button_list.dart';
 import 'package:calculator_using_flutter/is_operator.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
+import 'dart:math';
 
 void main() {
   runApp(const CalculatorRootApp());
@@ -53,8 +54,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     alignment: Alignment.centerRight,
                     child: Text(
                       userInput,
-                      style: const TextStyle(
-                        fontSize: 18, color: Colors.white),
+                      style: const TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ),
                   Container(
@@ -127,6 +127,34 @@ class _CalculatorPageState extends State<CalculatorPage> {
                       textColor: Colors.black,
                     );
                   }
+
+                  // Power Button function
+                  else if (index == 4) {
+                    return MyButton(
+                      buttontapped: () {
+                        setState(() {
+                          num findingNumber = num.parse(buttons[index]);
+
+                          if (findingNumber == 0 ||
+                              findingNumber == 1 ||
+                              findingNumber == 2 ||
+                              findingNumber == 3 ||
+                              findingNumber == 4 ||
+                              findingNumber == 5 ||
+                              findingNumber == 6 ||
+                              findingNumber == 7 ||
+                              findingNumber == 8 ||
+                              findingNumber == 9) {
+                            userInput += sin(findingNumber).toString();
+                          }
+                        });
+                      },
+                      buttonText: buttons[index],
+                      color: Colors.yellow[50],
+                      textColor: Colors.red[10],
+                    );
+                  }
+
                   // Equal to Button function
                   else if (index == 18) {
                     return MyButton(
