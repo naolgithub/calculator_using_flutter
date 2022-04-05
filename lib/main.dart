@@ -53,7 +53,8 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     alignment: Alignment.centerRight,
                     child: Text(
                       userInput,
-                      style: const TextStyle(fontSize: 18, color: Colors.white),
+                      style: const TextStyle(
+                        fontSize: 18, color: Colors.white),
                     ),
                   ),
                   Container(
@@ -63,7 +64,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                       answer,
                       style: const TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: Colors.cyan,
                           fontWeight: FontWeight.bold),
                     ),
                   )
