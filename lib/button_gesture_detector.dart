@@ -3,15 +3,18 @@ import 'package:flutter/material.dart';
 // creating Stateless Widget for buttons
 class MyButton extends StatelessWidget {
   // declaring variables
+  // ignore: prefer_typing_uninitialized_variables
   final color;
+  // ignore: prefer_typing_uninitialized_variables
   final textColor;
   final String buttonText;
+  // ignore: prefer_typing_uninitialized_variables
   final buttontapped;
 
   //Constructor
-  MyButton({
+  const MyButton({Key? key, 
     this.color, this.textColor,
-     required this.buttonText, this.buttontapped});
+     required this.buttonText, this.buttontapped}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
