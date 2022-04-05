@@ -127,26 +127,29 @@ class _CalculatorPageState extends State<CalculatorPage> {
                       textColor: Colors.black,
                     );
                   }
-
-                  // Power Button function
+// Power Button function
                   else if (index == 4) {
                     return MyButton(
                       buttontapped: () {
                         setState(() {
-                          num findingNumber = num.parse(buttons[index]);
-
-                          if (findingNumber == 0 ||
-                              findingNumber == 1 ||
-                              findingNumber == 2 ||
-                              findingNumber == 3 ||
-                              findingNumber == 4 ||
-                              findingNumber == 5 ||
-                              findingNumber == 6 ||
-                              findingNumber == 7 ||
-                              findingNumber == 8 ||
-                              findingNumber == 9) {
-                            userInput += sin(findingNumber).toString();
-                          }
+                          double findingNumbers = double.parse(buttons[index]);
+                          NumberChecker checker = NumberChecker(findingNumbers);
+                          userInput += pow(checker.numberfinder, 2).toString();
+                        });
+                      },
+                      buttonText: buttons[index],
+                      color: Colors.yellow[50],
+                      textColor: const Color.fromARGB(255, 54, 152, 244),
+                    );
+                  }
+                  // Sine Button function
+                  else if (index == 5) {
+                    return MyButton(
+                      buttontapped: () {
+                        setState(() {
+                          double findingNumbers = double.parse(buttons[index]);
+                          NumberChecker checker = NumberChecker(findingNumbers);
+                          userInput += sin(checker.numberfinder).toString();
                         });
                       },
                       buttonText: buttons[index],
@@ -154,7 +157,36 @@ class _CalculatorPageState extends State<CalculatorPage> {
                       textColor: Colors.red[10],
                     );
                   }
-
+// Cosiine Button function
+                  else if (index == 6) {
+                    return MyButton(
+                      buttontapped: () {
+                        setState(() {
+                          double findingNumbers = double.parse(buttons[index]);
+                          NumberChecker checker = NumberChecker(findingNumbers);
+                          userInput += cos(checker.numberfinder).toString();
+                        });
+                      },
+                      buttonText: buttons[index],
+                      color: Colors.blue[50],
+                      textColor: Colors.green[10],
+                    );
+                  }
+// Tangent Button function
+                  else if (index == 7) {
+                    return MyButton(
+                      buttontapped: () {
+                        setState(() {
+                          double findingNumbers = double.parse(buttons[index]);
+                          NumberChecker checker = NumberChecker(findingNumbers);
+                          userInput += tan(checker.numberfinder).toString();
+                        });
+                      },
+                      buttonText: buttons[index],
+                      color: const Color.fromARGB(255, 239, 231, 255),
+                      textColor: const Color.fromARGB(255, 184, 54, 244),
+                    );
+                  }
                   // Equal to Button function
                   else if (index == 18) {
                     return MyButton(
@@ -204,4 +236,25 @@ class _CalculatorPageState extends State<CalculatorPage> {
     double eval = exp.evaluate(EvaluationType.REAL, cm);
     answer = eval.toString();
   }
+}
+
+class NumberChecker {
+  late final double number;
+  NumberChecker(this.number);
+  set numberFinder(double findingNumber) {
+    if (findingNumber == 0 ||
+        findingNumber == 1 ||
+        findingNumber == 2 ||
+        findingNumber == 3 ||
+        findingNumber == 4 ||
+        findingNumber == 5 ||
+        findingNumber == 6 ||
+        findingNumber == 7 ||
+        findingNumber == 8 ||
+        findingNumber == 9) {
+      number = findingNumber;
+    }
+  }
+
+  get numberfinder => number;
 }
